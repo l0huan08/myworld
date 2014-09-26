@@ -86,7 +86,7 @@ public class ClientAccountServlet extends HttpServlet {
 			String status = account.isActive()?"Active":"Frozen";
 			sb.append(String.format("<tr class='%s'>",status));
 			sb.append(String.format(
-					"<td><input type='radio' name='selAccount' value='%s'></td>",
+					"<td><input type='radio' name='selAccount' value='%s' /></td>",
 					account.getAccountNumber()));
 			sb.append("<td>"+account.getAccountNumber()+"</td>");
 			sb.append("<td>"+account.getAccountType().getTypeName()+"</td>");

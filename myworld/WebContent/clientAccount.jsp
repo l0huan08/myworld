@@ -10,7 +10,7 @@
 <script>
 
 $(document).ready( function(){
-    var username = '<%=session.getAttribute("username")%>';
+    var username = '<%=request.getParameter("username")%>';
     $.ajax ( {
         type: "post",
         url: "ClientAccountServlet?flag="+Math.random(),
@@ -30,7 +30,11 @@ $(document).ready( function(){
 
     $("#btnTransfer").click( function() {
         var accountNumber = $("input[name='selAccount']:checked","#tbAccount").val();
-        location.href="makeTransfer.jsp?accountNumber='"+accountNumber;
+        if (accountNumber==null ||  accountNumber=="" ){
+            alert("Please select an account!");
+        	return false;
+        }
+        location.href="makeTransfer.jsp?accountNumber="+accountNumber;
     });
     
 } );

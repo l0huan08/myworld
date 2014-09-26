@@ -7,26 +7,33 @@
 <title>Insert title here</title>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script>
-var accountNumber = $.session("accountNumber"); //from account
 
-$(document).ready( function() {
-	var accountNumber=<%=request.getParameter("accountNumber") %>;
+function getInfo(){
+	var accountNumber = <%=request.getParameter("accountNumber")%>;
+	$("#fromAccount").val(accountNumber);
+	
 	$.ajax({
-		   type: "get",
+		   type: "GET",
 		   url: "GetTransferToAccountsServlet",
 		   dataType: "html",
 		   data:{"accountNumber":accountNumber},
 		   success: function(data) {
 			   if (data) {
-				   $("#toAccount".html(data));
+				   $("#toAccount").html(data);
 			   } else {
-				return false;
+				   alert("Cannot Read Account from Server!");
+				   return false;
 			   }
 		   },
 		   error: function(jqXHR,textStatus,errorThrown) {
 			   alert("Cannot get transfers from server.");
 		   }	
 	});
+}
+
+$(document).ready( function() {
+	getInfo();
+
 });
 
 </script>
@@ -34,15 +41,20 @@ $(document).ready( function() {
 <body>
     <h2>Transfer Money!</h2>
     <form id="transferForm" action="MakeTransferServlet" method="post">
+    	<p>
+    		From:
+    		<input id="fromAccount" type="hidden" name="fromAccount"/>
+    	</p>
         <p>To: 
             <select id="toAccount" name="toAccount">
+            <option>Nothing</option>
             </select>
         </p>
-        <p>Amount:<input id="amount" type="text"/></p>
-        <p>Memo<textarea rows="4" cols="20"></textarea></p>
+        <p>Amount:<input id="amount" type="text" name="amount"/> Dollars</p>
+        <p>Memo<textarea rows="4" cols="20" name="memo"></textarea></p>
         <p>
-            <input type="submit" id="submit" name="submitTransfer" value="Confirm">
-            <input type="button" id="cancel" name="submitTransfer" value="Cancel">
+            <input type="submit" id="submit" name="submitTransfer" value="Confirm" />
+            <input type="button" id="cancel" name="submitTransfer" value="Cancel" />
         </p>
     </form>
 </body>
