@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Courier
+}
+
+input[type="text"] {
+	border-style: solid;
+	border-color: black;
+}
+
+input[readonly="readonly"] {
+    background-color: #CCFF99;
+    border-style: none;
+}
+
+
+
+table {
+    border: 1px solid black;
+    text-align:center;
+    padding:15px;
+}
+
+tr:first-child {
+	border: 1px dashed black;
+}
+
+td {
+	padding:8px;
+}
+
+td.Frozen {
+    color: #0BAAF4;
+    font-weight: bold;
+}
+	
+td.Active {
+	color: #04E33E;
+	font-weight: bold;
+}
+
+
+.menu1 {
+	background-color: rgb(236,137,56);
+	border-style: outset;
+	border-radius:25px;
+}
