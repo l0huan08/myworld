@@ -34,6 +34,10 @@ public class ClientProfileServlet extends HttpServlet {
 		String username = (String)request.getParameter("username");
 		ClientDao clientDao = new ClientDao();
 		Client client = clientDao.getClient(username);
+		if (client==null){
+			return;
+		}
+		
 		StringBuffer jsonData = new StringBuffer();
 		jsonData.append("{");
 		
