@@ -30,6 +30,7 @@ td {
 	padding:8px;
 }
 
+/* account status */
 td.Frozen {
     color: #0BAAF4;
     font-weight: bold;
@@ -41,8 +42,28 @@ td.Active {
 }
 
 
+/* transaction type */
+tr.transferin {
+	background-color: 	#5CE68A;
+}
+
+tr.deposit {
+	background-color: 	#5CE68A;
+}
+
+
+tr.transferout {
+	background-color: 	#FF9999;
+}
+
+tr.withdraw {
+	background-color: 	#FF9999;
+}
+
+
+
 .menu1 {
 	background-color: rgb(236,137,56);
 	border-style: outset;
-	border-radius:25px;
+	/* border-radius:25px; */
 }

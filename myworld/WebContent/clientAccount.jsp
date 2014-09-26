@@ -37,6 +37,15 @@ $(document).ready( function(){
         location.href="makeTransfer.jsp?accountNumber="+accountNumber;
     });
     
+    $("#btnStatement").click( function(){
+    	var accountNumber = $("input[name='selAccount']:checked","#tbAccount").val();
+        if (accountNumber==null ||  accountNumber=="" ){
+            alert("Please select an account!");
+        	return false;
+        }
+        location.href="accountStatement.jsp?accountNumber="+accountNumber;
+    } );
+    
 } );
 
 
